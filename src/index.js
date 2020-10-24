@@ -2,13 +2,26 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { GlobalStyles } from './global-styles';
 import { App } from './App';
+import { FirebaseContext } from './context/firebase';
 
 import * as serviceWorker from './serviceWorker';
 
+const firebaseConfig = {
+    apiKey: 'AIzaSyC-oqLONd3N5xB2hJXlCr-R4XhdDgxiqCw',
+    authDomain: 'netflix-project-66043.firebaseapp.com',
+    databaseURL: 'https://netflix-project-66043.firebaseio.com',
+    projectId: 'netflix-project-66043',
+    storageBucket: 'netflix-project-66043.appspot.com',
+    messagingSenderId: '701172145806',
+    appId: '1:701172145806:web:40681e1b23a5c4250073df',
+};
+
 ReactDOM.render(
     <React.StrictMode>
-        <GlobalStyles />
-        <App />
+        <FirebaseContext.Provider value={{ firebase: window.firebase }}>
+            <GlobalStyles />
+            <App />
+        </FirebaseContext.Provider>
     </React.StrictMode>,
     document.getElementById('root')
 );
