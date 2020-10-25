@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import { GlobalStyles } from './global-styles';
 import { App } from './App';
 import { FirebaseContext } from './context/firebase';
+import * as Firebase from 'firebase/app';
+
+import 'firebase/auth';
+import 'firebase/firestore';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -16,9 +20,11 @@ const firebaseConfig = {
     appId: '1:701172145806:web:40681e1b23a5c4250073df',
 };
 
+const firebase = Firebase.initializeApp(firebaseConfig);
+
 ReactDOM.render(
     <React.StrictMode>
-        <FirebaseContext.Provider value={{ firebase: window.firebase }}>
+        <FirebaseContext.Provider value={{ firebase }}>
             <GlobalStyles />
             <App />
         </FirebaseContext.Provider>
