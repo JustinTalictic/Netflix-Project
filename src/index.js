@@ -3,12 +3,11 @@ import ReactDOM from 'react-dom';
 import { GlobalStyles } from './global-styles';
 import { App } from './App';
 import { FirebaseContext } from './context/firebase';
-import * as Firebase from 'firebase/app';
-
-import 'firebase/auth';
-import 'firebase/firestore';
+import * as Firebase from 'firebase';
 
 import * as serviceWorker from './serviceWorker';
+
+//import { seedDatabase } from './seed';
 
 const firebaseConfig = {
     apiKey: 'AIzaSyC-oqLONd3N5xB2hJXlCr-R4XhdDgxiqCw',
@@ -21,6 +20,8 @@ const firebaseConfig = {
 };
 
 const firebase = Firebase.initializeApp(firebaseConfig);
+
+//seedDatabase(firebase);
 
 ReactDOM.render(
     <React.StrictMode>
