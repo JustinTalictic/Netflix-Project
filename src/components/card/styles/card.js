@@ -170,6 +170,7 @@ export const FeatureClose = styled.button`
     cursor: pointer;
     background-color: transparent;
     border: 0;
+    outline: none;
 
     img {
         filter: brightness(0) invert(1);
