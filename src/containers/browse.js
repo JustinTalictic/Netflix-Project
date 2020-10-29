@@ -81,6 +81,7 @@ export function BrowseContainer({ slides }) {
                             searchTerm={searchTerm}
                             setSearchTerm={setSearchTerm}
                         />
+                        <Header.Break />
                         <Header.Profile>
                             <Header.Picture src={user.photoURL} />
                             <Header.Dropdown>

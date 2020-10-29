@@ -139,6 +139,7 @@ export const PlayButton = styled.button`
 
 export const Search = styled.div`
     display: flex;
+    position: relative;
     align-items: center;
 
     @media (max-width: 700px) {
@@ -147,27 +148,30 @@ export const Search = styled.div`
 `;
 
 export const SearchIcon = styled.button`
+    position: absolute;
     cursor: pointer;
     background-color: transparent;
     border: 0;
+    outline: none;
+    z-index: ${({ active, vidActive }) =>
+        vidActive === true ? '0' : active ? '1' : '0'};
 
     img {
         filter: brightness(0) invert(1);
-        width: 16px;
+        width: 20px;
     }
 `;
 
 export const SearchInput = styled.input`
-    background-color: #44444459;
+    background-color: black;
     color: white;
     border: 1px solid white;
     transition: width 0.5s;
     height: 30px;
     font-size: 14px;
-    margin-left: ${({ active }) => (active === true ? '10px' : '0')};
-    padding: ${({ active }) => (active === true ? '0 10px' : '0')};
-    opacity: ${({ active }) => (active === true ? '1' : '0')};
-    width: ${({ active }) => (active === true ? '200px' : '0px')};
+    padding-left: ${({ active }) => (active === true ? '35px' : '0')};
+    opacity: ${({ active }) => (active === true ? '0.75' : '0')};
+    width: ${({ active }) => (active === true ? '230px' : '0px')};
 `;
 
 export const Picture = styled.button`
@@ -249,7 +253,7 @@ export const Close = styled.button`
     color: white;
     position: absolute;
     right: 5px;
-    top: 12px;
+    top: 20px;
     cursor: pointer;
     background-color: transparent;
     border: 0;
@@ -276,4 +280,8 @@ export const Inner = styled.div`
     &:hover ${Close} {
         display: block;
     }
+`;
+
+export const Break = styled.div`
+    padding-right: 1em;
 `;

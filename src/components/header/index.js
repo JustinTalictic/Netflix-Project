@@ -21,6 +21,7 @@ import {
     Overlay,
     Inner,
     Close,
+    Break,
 } from './styles/header';
 
 export const HeaderContext = createContext();
@@ -49,16 +50,21 @@ Header.Search = function HeaderSearch({
     ...restProps
 }) {
     const [searchActive, setSearchActive] = useState(false);
+    const { showPlayer } = useContext(HeaderContext);
 
     return (
         <Search {...restProps}>
-            <SearchIcon onClick={() => setSearchActive(!searchActive)}>
+            <SearchIcon
+                onClick={() => setSearchActive(!searchActive)}
+                active={searchActive}
+                vidActive={showPlayer}
+            >
                 <img src="/images/icons/search.png" alt="Search" />
             </SearchIcon>
             <SearchInput
                 value={searchTerm}
                 onChange={({ target }) => setSearchTerm(target.value)}
-                placeholder="Search files and series"
+                placeholder="Titles, people, genre"
                 active={searchActive}
             />
         </Search>
@@ -140,4 +146,8 @@ Header.Dropdown = function HeaderDRopdown({ children, ...restProps }) {
 
 Header.Profile = function HeaderProfile({ children, ...restProps }) {
     return <Profile {...restProps}>{children}</Profile>;
+};
+
+Header.Break = function HeaderBreak({ children, ...restProps }) {
+    return <Break {...restProps} />;
 };
