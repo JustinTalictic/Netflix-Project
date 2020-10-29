@@ -50,14 +50,14 @@ export const Inner = styled.div`
 `;
 
 export const Button = styled.button`
-    background-color: #e50914;
-    border-color: #ff0a16;
+    background-color: white;
     border-radius: 5px;
+    border-width: 0;
     width: 115px;
     height: 45px;
     text-transform: uppercase;
     font-weight: bold;
-    color: white;
+    color: #000;
     font-size: 18px;
     height: 45px;
     cursor: pointer;
@@ -67,7 +67,12 @@ export const Button = styled.button`
     padding-left: 0;
 
     &:hover {
-        transform: scale(1.05);
-        background-color: #ff0a16;
+        background: #e6e6e6;
+        opacity: 0.75;
+    }
+
+    img {
+        filter: brightness(0);
+        width: 28px;
     }
 `;

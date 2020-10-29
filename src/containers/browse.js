@@ -67,13 +67,13 @@ export function BrowseContainer({ slides }) {
                             active={category === 'series' ? 'true' : 'false'}
                             onClick={() => setCategory('series')}
                         >
-                            Series
+                            TV Shows
                         </Header.Link>
                         <Header.Link
                             active={category === 'films' ? 'true' : 'false'}
                             onClick={() => setCategory('films')}
                         >
-                            Films
+                            Movies
                         </Header.Link>
                     </Header.Group>
                     <Header.Group>
@@ -115,7 +115,8 @@ export function BrowseContainer({ slides }) {
                         job as a clown, and the guise he projects in a futile
                         attempt to feel like he's part of the world around him.
                     </Header.Text>
-                    <Header.PlayButton>Play</Header.PlayButton>
+                    <Header.PlayButton />
+                    <Header.Video />
                 </Header.Feature>
             </Header>
 

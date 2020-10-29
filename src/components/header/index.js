@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, createContext } from 'react';
+import ReactDOM from 'react-dom';
 import { Link as ReachRouterLink } from 'react-router-dom';
 import {
     Group,
@@ -17,10 +18,21 @@ import {
     Picture,
     Dropdown,
     Profile,
+    Overlay,
+    Inner,
+    Close,
 } from './styles/header';
 
+export const HeaderContext = createContext();
+
 export default function Header({ bg = true, children, ...restProps }) {
-    return bg ? <Background {...restProps}>{children}</Background> : children;
+    const [showPlayer, setShowPlayer] = useState(false);
+
+    return (
+        <HeaderContext.Provider value={{ showPlayer, setShowPlayer }}>
+            {bg ? <Background {...restProps}>{children}</Background> : children}
+        </HeaderContext.Provider>
+    );
 }
 
 Header.Frame = function HeaderFrame({ children, ...restProps }) {
@@ -84,8 +96,38 @@ Header.FeatureCallOut = function HeaderFeatureCallOut({
     return <FeatureCallOut {...restProps}>{children}</FeatureCallOut>;
 };
 
-Header.PlayButton = function HeaderPlayButton({ children, ...restProps }) {
-    return <PlayButton {...restProps}>{children}</PlayButton>;
+Header.Video = function HeaderVideo({ ...restProps }) {
+    const { showPlayer, setShowPlayer } = useContext(HeaderContext);
+
+    return showPlayer
+        ? ReactDOM.createPortal(
+              <Overlay>
+                  <Inner>
+                      <video id="netflix-player" controls autoPlay>
+                          <source
+                              src="/videos/Netflix-Joker.mp4"
+                              type="video/mp4"
+                          />
+                      </video>
+                      <Close onClick={() => setShowPlayer(false)}>
+                          <img src="/images/icons/close-slim.png" alt="Close" />
+                      </Close>
+                  </Inner>
+              </Overlay>,
+              document.body
+          )
+        : null;
+};
+
+Header.PlayButton = function HeaderPlayButton({ ...restProps }) {
+    const { showPlayer, setShowPlayer } = useContext(HeaderContext);
+
+    return (
+        <PlayButton onClick={() => setShowPlayer(!showPlayer)}>
+            <img src="/images/icons/play-arrow.png" alt="play-arrow" />
+            Play
+        </PlayButton>
+    );
 };
 
 Header.Picture = function HeaderPicture({ src, ...restProps }) {

@@ -40,5 +40,10 @@ Player.Video = function PlayerVideo({ ...restProps }) {
 Player.Button = function PlayerButton({ ...restProps }) {
     const { showPlayer, setShowPlayer } = useContext(PlayerContext);
 
-    return <Button onClick={() => setShowPlayer(!showPlayer)}>Play</Button>;
+    return (
+        <Button onClick={() => setShowPlayer(!showPlayer)}>
+            <img src="/images/icons/play-arrow.png" alt="play-arrow" />
+            Play
+        </Button>
+    );
 };
