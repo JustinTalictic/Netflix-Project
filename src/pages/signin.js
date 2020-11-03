@@ -32,6 +32,22 @@ export default function Signin() {
             });
     };
 
+    const handleDemo = e => {
+        e.preventDefault();
+
+        firebase
+            .auth()
+            .signInWithEmailAndPassword('demo@demo.com', 'demo123')
+            .then(() => {
+                history.push(ROUTES.BROWSE);
+            })
+            .catch(error => {
+                setEmailAddress('');
+                setPassword('');
+                setError(error.message);
+            });
+    };
+
     return (
         <>
             <HeaderContainer>
@@ -65,6 +81,8 @@ export default function Signin() {
                         <Form.TextSmall>
                             This page is protected by Google reCAPTCHA.
                         </Form.TextSmall>
+
+                        <Form.Demo onClick={handleDemo}>Demo Login</Form.Demo>
                     </Form.Base>
                 </Form>
             </HeaderContainer>

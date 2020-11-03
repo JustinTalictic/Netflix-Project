@@ -189,8 +189,8 @@ export const Dropdown = styled.div`
     background-color: black;
     padding: 10px;
     width: 100px;
-    top: 32px;
-    right: 10px;
+    top 32px;
+    right: 0;
 
     ${Group}:last-of-type ${Link} {
         cursor: pointer;

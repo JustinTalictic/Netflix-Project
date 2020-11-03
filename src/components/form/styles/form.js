@@ -49,6 +49,7 @@ export const TextSmall = styled.h2`
     font-size: 13px;
     line-height: normal;
     color: #8c8c8c;
+    margin-bottom: 3em;
 `;
 
 export const Link = styled(ReachRouterLink)`
@@ -77,6 +78,22 @@ export const Input = styled.input`
 
 export const Submit = styled.button`
     background: #e50914;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 12px;
+    padding: 16px;
+    border: 0;
+    color: white;
+    cursor: pointer;
+
+    &:disabled {
+        opacity: 0.5;
+    }
+`;
+
+export const Demo = styled.button`
+    background: #333;
     border-radius: 4px;
     font-size: 16px;
     font-weight: bold;
