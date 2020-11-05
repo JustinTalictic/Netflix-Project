@@ -10,13 +10,13 @@ import * as serviceWorker from './serviceWorker';
 //import { seedDatabase } from './seed';
 
 const firebaseConfig = {
-    apiKey: 'AIzaSyC-oqLONd3N5xB2hJXlCr-R4XhdDgxiqCw',
-    authDomain: 'netflix-project-66043.firebaseapp.com',
-    databaseURL: 'https://netflix-project-66043.firebaseio.com',
-    projectId: 'netflix-project-66043',
-    storageBucket: 'netflix-project-66043.appspot.com',
-    messagingSenderId: '701172145806',
-    appId: '1:701172145806:web:40681e1b23a5c4250073df',
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_DATABASE_URL,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_APP_ID,
 };
 
 const firebase = Firebase.initializeApp(firebaseConfig);
